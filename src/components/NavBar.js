@@ -9,10 +9,20 @@ class NavBar extends Component {
 
   render() {
     return (
-      <nav>
-        <NavLink to="/">Blog</NavLink>
-        <NavLink to="/new">Add a new post</NavLink>
-      </nav>
+      <header className="jumbotron">
+        <h1 className="display-3 text-left">Micro Blog</h1>
+        <p className="lead text-left">
+          This is the blog to reord trvial things.
+        </p>
+        <nav className="text-left">
+          <NavLink className="blockquote mr-4" to="/">
+            Blog
+          </NavLink>
+          <NavLink to="/new">
+            <strong>Add a new post</strong>{' '}
+          </NavLink>
+        </nav>
+      </header>
     );
   }
 }

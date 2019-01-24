@@ -10,7 +10,7 @@ class Home extends Component {
   render() {
     let blogArray = Object.values(this.props.blogs);
     return (
-      <div>
+      <div className="row">
         {blogArray.map(blog => (
           <BlogCard blog={blog} key={blog.id} />
         ))}

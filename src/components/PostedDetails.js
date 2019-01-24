@@ -90,20 +90,28 @@ class PostedDetails extends Component {
                 disabled={this.state.disabled}
               />
             </div>
-            <button disabled={this.state.disabled}>Submit</button>
+            <button hidden={this.state.disabled} class="btn btn-danger">
+              Submit
+            </button>
           </form>
-          <button onClick={this.edit}>Edit</button>
-          <button onClick={this.handleDelete}>Delete</button>
+          <button onClick={this.edit} class="btn btn-primary">
+            Edit
+          </button>
+          <button onClick={this.handleDelete} class="btn btn-primary">
+            Delete
+          </button>
         </section>
         <section>
           <h2>Comments:</h2>
-          {this.state.blog.comments.map(comment => (
-            <CommentContainer
-              key={comment.id}
-              blogId={this.state.blog.id}
-              comment={comment}
-            />
-          ))}
+          <div className="container">
+            {this.state.blog.comments.map(comment => (
+              <CommentContainer
+                key={comment.id}
+                blogId={this.state.blog.id}
+                comment={comment}
+              />
+            ))}
+          </div>
           <NewCommentFormContainer blogId={this.state.blog.id} />
         </section>
       </div>

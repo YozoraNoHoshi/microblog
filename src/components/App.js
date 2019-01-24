@@ -56,7 +56,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container mt-2 mb-2">
         <NavBar />
         <Routes
           blogs={this.state.blogs}

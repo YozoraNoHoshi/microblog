@@ -8,10 +8,13 @@ class Comment extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.delete}>delete</button>
-        <p>{this.props.comment.comment}</p>
-      </div>
+      <li className="container">
+        <span>{this.props.comment.comment}</span>
+
+        <button onClick={this.delete} className="btn btn-link">
+          delete
+        </button>
+      </li>
     );
   }
 }

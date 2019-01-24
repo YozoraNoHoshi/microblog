@@ -24,7 +24,7 @@ class NewCommentForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <label htmlFor="newComment">New Comment</label>
+          <label htmlFor="newComment float-left">New Comment</label>
           <input
             type="text"
             className="form-control"
@@ -34,7 +34,7 @@ class NewCommentForm extends Component {
             value={this.state.comment}
           />
         </div>
-        <button>submit</button>
+        <button className="btn btn-primary">submit</button>
       </form>
     );
   }
