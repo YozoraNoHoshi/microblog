@@ -5,10 +5,13 @@ class Home extends Component {
   //componentDidMount() {}
   //this.props.blogs
 
+  // Uses container
+
   render() {
+    let blogArray = Object.values(this.props.blogs);
     return (
       <div>
-        {this.props.blogs.map(blog => (
+        {blogArray.map(blog => (
           <BlogCard blog={blog} key={blog.id} />
         ))}
       </div>

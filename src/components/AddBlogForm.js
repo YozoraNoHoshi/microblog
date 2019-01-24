@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import uuid from 'uuid/v4';
 
+// Uses container
+
 class AddBlogForm extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +21,7 @@ class AddBlogForm extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props.submit({ ...this.state, id: uuid(), comments: [] });
+    this.props.addPost({ ...this.state, id: uuid(), comments: [] });
     this.props.history.push('/');
   };
 

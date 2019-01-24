@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
 import NewCommentForm from './NewCommentForm';
+import NewCommentFormContainer from '../containers/NewCommentFormContainer';
+import CommentContainer from '../containers/CommentContainer';
+// Container
 
 class PostedDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // For edit form
       blog: { title: '', description: '', body: '', comments: [] },
       disabled: true
     };
   }
   componentDidMount() {
     const id = this.props.match.params.id;
-    const blogs = this.props.blogs;
-    const blog = blogs.find(blog => blog.id === id);
+    const blog = this.props.blogs[id];
     if (blog) {
       this.setState({ blog });
     } else {
@@ -34,13 +37,13 @@ class PostedDetails extends Component {
 
   handleEdit = evt => {
     evt.preventDefault();
-    this.props.edit(this.state.blog);
+    this.props.editPost(this.state.blog);
     this.props.history.push('/');
   };
 
   handleDelete = evt => {
     evt.preventDefault();
-    this.props.delete(this.state.blog.id);
+    this.props.deletePost(this.state.blog.id);
     this.props.history.push('/');
   };
 
@@ -95,17 +98,13 @@ class PostedDetails extends Component {
         <section>
           <h2>Comments:</h2>
           {this.state.blog.comments.map(comment => (
-            <Comment
+            <CommentContainer
               key={comment.id}
               blogId={this.state.blog.id}
               comment={comment}
-              deleteComment={this.props.deleteComment}
             />
           ))}
-          <NewCommentForm
-            addComment={this.props.addComment}
-            blogId={this.state.blog.id}
-          />
+          <NewCommentFormContainer blogId={this.state.blog.id} />
         </section>
       </div>
     );

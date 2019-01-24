@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// Uses container
 
 class Comment extends Component {
   delete = () => {

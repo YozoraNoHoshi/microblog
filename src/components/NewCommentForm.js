@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'uuid/v4';
+// Container
 
 class NewCommentForm extends Component {
   constructor(props) {
