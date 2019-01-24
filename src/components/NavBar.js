@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  componentDidMount() {
-    this.props.getBlogsFromAPI();
-  }
-
   render() {
     return (
       <header className="jumbotron">

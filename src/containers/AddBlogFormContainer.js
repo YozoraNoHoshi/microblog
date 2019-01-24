@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AddBlogForm from '../components/AddBlogForm';
-import { addPost } from '../actionCreator';
+import { postBlogsToAPI } from '../actionCreator';
 
 class AddBlogFormContainer extends Component {
   render() {
@@ -9,11 +9,7 @@ class AddBlogFormContainer extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {null};
-// }
-
 export default connect(
   null,
-  { addPost }
+  { postBlogsToAPI }
 )(AddBlogFormContainer);

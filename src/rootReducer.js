@@ -14,7 +14,7 @@ const INITIAL_STATE = {
     //   id: '',
     //   description: '',
     //   body: '',
-    //   comments: [{ id: '', comment: '' }]
+    //   comments: [{ id: '', text: '' }]
     // }
   }
 };

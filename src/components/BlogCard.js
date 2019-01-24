@@ -12,8 +12,6 @@ class BlogCard extends Component {
                 {this.props.blog.title}
               </Link>
             </h5>
-            {/* 
-          <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6> */}
             <p className="card-text">{this.props.blog.description}</p>
           </div>
         </div>

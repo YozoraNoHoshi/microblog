@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostedDetails from '../components/PostedDetails';
-import { editPost, deletePost } from '../actionCreator';
+import { deleteBlogsToAPI, putBlogsToAPI } from '../actionCreator';
 import { withRouter } from 'react-router-dom';
 class PostedDetailsContainer extends Component {
   render() {
@@ -17,6 +17,6 @@ function mapStateToProps(state) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { editPost, deletePost }
+    { deleteBlogsToAPI, putBlogsToAPI }
   )(PostedDetailsContainer)
 );

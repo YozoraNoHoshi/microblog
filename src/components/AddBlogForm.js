@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import uuid from 'uuid/v4';
+// import uuid from 'uuid/v4';
 
 // Uses container
 
@@ -21,7 +21,8 @@ class AddBlogForm extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props.addPost({ ...this.state, id: uuid(), comments: [] });
+    this.props.postBlogsToAPI(this.state);
+    // this.props.addPost({ ...this.state, id: uuid(), comments: [] });
     this.props.history.push('/');
   };
 

@@ -21,10 +21,7 @@ class Routes extends Component {
         <Route
           path="/new"
           exact
-          render={props => (
-            <AddBlogFormContainer {...props} />
-            // <AddBlogForm submit={this.props.submit} {...props} />
-          )}
+          render={props => <AddBlogFormContainer {...props} />}
         />
         <Route
           path="/blogs/:id"

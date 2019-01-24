@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class Comment extends Component {
   delete = () => {
-    this.props.deleteComment(this.props.blogId, this.props.comment.id);
+    this.props.deleteCommentToAPI(this.props.blogId, this.props.comment.id);
   };
 
   render() {

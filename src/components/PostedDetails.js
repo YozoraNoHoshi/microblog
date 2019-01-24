@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Comment from './Comment';
-import NewCommentForm from './NewCommentForm';
+// import Comment from './Comment';
+// import NewCommentForm from './NewCommentForm';
 import NewCommentFormContainer from '../containers/NewCommentFormContainer';
 import CommentContainer from '../containers/CommentContainer';
 // Container
@@ -20,13 +20,12 @@ class PostedDetails extends Component {
     if (blog) {
       this.setState({ blog });
     } else {
-      alert('not existing');
       this.props.history.push('/');
     }
     //the state.blog will have id after above
   }
   edit = () => {
-    this.setState({ disabled: false });
+    this.setState({ disabled: !this.state.disabled });
   };
 
   handleChange = evt => {
@@ -37,13 +36,13 @@ class PostedDetails extends Component {
 
   handleEdit = evt => {
     evt.preventDefault();
-    this.props.editPost(this.state.blog);
+    this.props.putBlogsToAPI(this.state.blog, this.props.match.params.id);
     this.props.history.push('/');
   };
 
   handleDelete = evt => {
     evt.preventDefault();
-    this.props.deletePost(this.state.blog.id);
+    this.props.deleteBlogsToAPI(this.state.blog.id);
     this.props.history.push('/');
   };
 
@@ -90,14 +89,14 @@ class PostedDetails extends Component {
                 disabled={this.state.disabled}
               />
             </div>
-            <button hidden={this.state.disabled} class="btn btn-danger">
+            <button hidden={this.state.disabled} className="btn btn-danger">
               Submit
             </button>
           </form>
-          <button onClick={this.edit} class="btn btn-primary">
+          <button onClick={this.edit} className="btn btn-primary">
             Edit
           </button>
-          <button onClick={this.handleDelete} class="btn btn-primary">
+          <button onClick={this.handleDelete} className="btn btn-primary">
             Delete
           </button>
         </section>

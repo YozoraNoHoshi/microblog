@@ -5,7 +5,7 @@ import uuid from 'uuid/v4';
 class NewCommentForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { comment: '' };
+    this.state = { text: '' };
   }
 
   handleChange = evt => {
@@ -16,22 +16,27 @@ class NewCommentForm extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    this.props.addComment({ ...this.state, id: uuid() }, this.props.blogId);
-    this.setState({ comment: '' });
+    this.props.postCommentToAPI(
+      { ...this.state, id: uuid() },
+      this.props.blogId
+    );
+    this.setState({ text: '' });
   };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <label htmlFor="newComment float-left">New Comment</label>
+          <label htmlFor="text" className="float-left">
+            New Comment
+          </label>
           <input
             type="text"
             className="form-control"
-            id="comment"
-            name="comment"
+            id="text"
+            name="text"
             onChange={this.handleChange}
-            value={this.state.comment}
+            value={this.state.text}
           />
         </div>
         <button className="btn btn-primary">submit</button>

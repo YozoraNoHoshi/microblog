@@ -24,7 +24,7 @@ router.get('/', async function(req, res, next) {
       `SELECT p.id,
               p.title,
               p.description,
-              p.votes, json_agg(c)
+              p.votes, json_agg(c) AS comments
       FROM posts p 
       LEFT JOIN comments c ON c.post_id = p.id
       
@@ -33,7 +33,6 @@ router.get('/', async function(req, res, next) {
       `
     );
 
-    console.log(result.rows);
     return res.json(result.rows);
   } catch (err) {
     return next(err);
