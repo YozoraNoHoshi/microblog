@@ -32,7 +32,6 @@ router.get('/', async function(req, res, next) {
       ORDER BY p.votes DESC
       `
     );
-    console.log(result.rows);
     return res.json(result.rows);
   } catch (err) {
     return next(err);
