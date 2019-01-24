@@ -29,10 +29,10 @@ router.get('/', async function(req, res, next) {
       LEFT JOIN comments c ON c.post_id = p.id
       
       GROUP BY p.id   
-      ORDER BY p.id
+      ORDER BY p.votes DESC
       `
     );
-
+    console.log(result.rows);
     return res.json(result.rows);
   } catch (err) {
     return next(err);

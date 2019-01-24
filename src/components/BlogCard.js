@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import VoteContainer from '../containers/VoteContainer';
 //render the individual blog card
 class BlogCard extends Component {
   render() {
@@ -13,6 +14,7 @@ class BlogCard extends Component {
               </Link>
             </h5>
             <p className="card-text">{this.props.blog.description}</p>
+            <VoteContainer blogId={this.props.blog.id} />
           </div>
         </div>
       </div>

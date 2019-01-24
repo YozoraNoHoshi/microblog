@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import NewCommentForm from './NewCommentForm';
 import NewCommentFormContainer from '../containers/NewCommentFormContainer';
 import CommentContainer from '../containers/CommentContainer';
+import VoteContainer from '../containers/VoteContainer';
 // Container
 
 class PostedDetails extends Component {
@@ -10,7 +11,13 @@ class PostedDetails extends Component {
     super(props);
     this.state = {
       // For edit form
-      blog: { title: '', description: '', body: '', comments: [] },
+      blog: {
+        title: '',
+        description: '',
+        body: '',
+        comments: [],
+        votes: 0
+      },
       disabled: true
     };
   }
@@ -47,6 +54,11 @@ class PostedDetails extends Component {
   };
 
   render() {
+    let vote = this.state.blog.id ? (
+      <VoteContainer blogId={this.state.blog.id} />
+    ) : (
+      false
+    );
     return (
       <div>
         <section>
@@ -99,6 +111,7 @@ class PostedDetails extends Component {
           <button onClick={this.handleDelete} className="btn btn-primary">
             Delete
           </button>
+          {vote}
         </section>
         <section>
           <h2>Comments:</h2>

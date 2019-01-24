@@ -5,7 +5,6 @@ import { deleteBlogsToAPI, putBlogsToAPI } from '../actionCreator';
 import { withRouter } from 'react-router-dom';
 class PostedDetailsContainer extends Component {
   render() {
-    console.log('broken?');
     return <PostedDetails {...this.props} />;
   }
 }

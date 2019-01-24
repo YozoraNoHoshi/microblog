@@ -4,10 +4,20 @@ import {
   EDIT_POST,
   ADD_COMMENT,
   DELETE_COMMENT,
-  GET_ALLPOSTS
+  GET_ALLPOSTS,
+  VOTE
 } from './actions.js';
 import axios from 'axios';
 const BASE_URL = 'http://localhost:5000/api/posts';
+
+export function votePost(blogId, direction) {
+  // Change is either -1 or +1
+  return async function(dispatch) {
+    const res = await axios.post(`${BASE_URL}/${blogId}/vote/${direction}`);
+    let { votes } = res.data;
+    dispatch(vote(blogId, votes));
+  };
+}
 
 // //get all post API
 export function getBlogsFromAPI() {
@@ -71,6 +81,10 @@ function getAllPosts(blogs) {
   return { type: GET_ALLPOSTS, blogs };
 }
 
+function vote(blogId, votes) {
+  // Change is either -1 or +1
+  return { type: VOTE, payload: { blogId, votes } };
+}
 function addPost(payload) {
   // Payload = {}
   return { type: ADD_POST, payload };

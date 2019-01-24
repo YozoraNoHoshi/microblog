@@ -5,7 +5,11 @@ class Home extends Component {
   // Uses container
 
   render() {
-    let blogArray = Object.values(this.props.blogs);
+    let blogArray = Object.values(this.props.blogs).sort(function(a, b) {
+      if (a.votes < b.votes) return 1;
+      if (a.votes > b.votes) return -1;
+      return 0;
+    });
     return (
       <div className="row">
         {blogArray.map(blog => (

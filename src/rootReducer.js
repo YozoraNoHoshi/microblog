@@ -4,7 +4,8 @@ import {
   EDIT_POST,
   ADD_COMMENT,
   DELETE_COMMENT,
-  GET_ALLPOSTS
+  GET_ALLPOSTS,
+  VOTE
 } from './actions.js';
 
 const INITIAL_STATE = {
@@ -21,6 +22,13 @@ const INITIAL_STATE = {
 
 function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case VOTE: {
+      let { blogId, votes } = action.payload;
+      return {
+        ...state,
+        blogs: { ...state.blogs, [blogId]: { ...state.blogs[blogId], votes } }
+      };
+    }
     case GET_ALLPOSTS: {
       return {
         ...state,
