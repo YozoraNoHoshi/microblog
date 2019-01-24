@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import BlogCard from './BlogCard';
 // view list of all the blogs
 class Home extends Component {
-  //componentDidMount() {}
+  // componentDidMount() {
+  //   this.props.getBlogsFromAPI();
+  // }
   //this.props.blogs
 
   // Uses container

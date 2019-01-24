@@ -13,8 +13,11 @@ class Routes extends Component {
         <Route
           path="/"
           exact
-          render={() => <HomeContainer blogs={this.props.blogs} />}
+          render={() => {
+            return <HomeContainer />;
+          }}
         />
+
         <Route
           path="/new"
           exact
@@ -27,16 +30,7 @@ class Routes extends Component {
           path="/blogs/:id"
           exact
           //component force the compponent to rerender
-          component={props => (
-            <PostedDetailsContainer
-              // blogs={this.props.blogs}
-              // edit={this.props.edit}
-              // delete={this.props.delete}
-              // deleteComment={this.props.deleteComment}
-              // addComment={this.props.addComment}
-              {...props}
-            />
-          )}
+          component={PostedDetailsContainer}
         />
         <Redirect to="/" />
       </Switch>

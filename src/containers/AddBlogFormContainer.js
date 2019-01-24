@@ -4,23 +4,16 @@ import AddBlogForm from '../components/AddBlogForm';
 import { addPost } from '../actionCreator';
 
 class AddBlogFormContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  componentDidMount() {}
-
   render() {
     return <AddBlogForm {...this.props} />;
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
+// function mapStateToProps(state) {
+//   return {null};
+// }
 
 export default connect(
-  mapStateToProps,
+  null,
   { addPost }
 )(AddBlogFormContainer);

@@ -9,7 +9,7 @@ class Comment extends Component {
   render() {
     return (
       <li className="container">
-        <span>{this.props.comment.comment}</span>
+        <span>{this.props.comment.text}</span>
 
         <button onClick={this.delete} className="btn btn-link">
           delete

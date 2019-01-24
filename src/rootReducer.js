@@ -3,7 +3,8 @@ import {
   DELETE_POST,
   EDIT_POST,
   ADD_COMMENT,
-  DELETE_COMMENT
+  DELETE_COMMENT,
+  GET_ALLPOSTS
 } from './actions.js';
 
 const INITIAL_STATE = {
@@ -20,6 +21,12 @@ const INITIAL_STATE = {
 
 function rootReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case GET_ALLPOSTS: {
+      return {
+        ...state,
+        blogs: action.blogs
+      };
+    }
     case ADD_POST: {
       return {
         ...state,

@@ -52,7 +52,7 @@ class PostedDetails extends Component {
       <div>
         <section>
           <form onSubmit={this.handleEdit}>
-            <h1>New Post</h1>
+            <h1>Edit Post</h1>
             <div className="form-group">
               <label htmlFor="title">Title</label>
               <input

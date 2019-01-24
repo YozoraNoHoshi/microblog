@@ -6,13 +6,16 @@ class NavBar extends Component {
     super(props);
     this.state = {};
   }
+  componentDidMount() {
+    this.props.getBlogsFromAPI();
+  }
 
   render() {
     return (
       <header className="jumbotron">
         <h1 className="display-3 text-left">Micro Blog</h1>
         <p className="lead text-left">
-          This is the blog to reord trvial things.
+          This is the blog to record trvial things.
         </p>
         <nav className="text-left">
           <NavLink className="blockquote mr-4" to="/">
