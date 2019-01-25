@@ -4,14 +4,15 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import rootReducer from './rootReducer';
+// import rootReducer from './rootReducer';
+import combinedReducers from './reducers/combinedReducers';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import AppContainer from './containers/AppContainer';
 
 const store = createStore(
-  rootReducer,
+  combinedReducers,
   compose(
     applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

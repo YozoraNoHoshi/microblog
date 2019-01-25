@@ -15,14 +15,18 @@ class PostedDetails extends Component {
         title: '',
         description: '',
         body: '',
-        comments: [],
+
         votes: 0
       },
+      // comments: [],
       disabled: true
     };
   }
   componentDidMount() {
-    const id = this.props.match.params.id;
+    // call the getallcommentsapi to get all the comments
+    const id = +this.props.match.params.id;
+    this.props.getAllCommentsBlogId(id);
+
     const blog = this.props.blogs[id];
     if (blog) {
       this.setState({ blog });
@@ -56,6 +60,25 @@ class PostedDetails extends Component {
   render() {
     let vote = this.state.blog.id ? (
       <VoteContainer blogId={this.state.blog.id} />
+    ) : (
+      false
+    );
+    console.log('this.props.comments', this.props.comments);
+    let comments = this.props.comments[this.props.match.params.id] ? (
+      <section>
+        <h2>Comments:</h2>
+
+        <div className="container">
+          {this.props.comments[this.props.match.params.id].map(comment => (
+            <CommentContainer
+              key={comment.id}
+              blogId={this.state.blog.id}
+              comment={comment}
+            />
+          ))}
+        </div>
+        <NewCommentFormContainer blogId={this.state.blog.id} />
+      </section>
     ) : (
       false
     );
@@ -113,19 +136,7 @@ class PostedDetails extends Component {
           </button>
           {vote}
         </section>
-        <section>
-          <h2>Comments:</h2>
-          <div className="container">
-            {this.state.blog.comments.map(comment => (
-              <CommentContainer
-                key={comment.id}
-                blogId={this.state.blog.id}
-                comment={comment}
-              />
-            ))}
-          </div>
-          <NewCommentFormContainer blogId={this.state.blog.id} />
-        </section>
+        {comments}
       </div>
     );
   }

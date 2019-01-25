@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostedDetails from '../components/PostedDetails';
-import { deleteBlogsToAPI, putBlogsToAPI } from '../actionCreator';
+import {
+  deleteBlogsToAPI,
+  putBlogsToAPI,
+  getAllCommentsBlogId
+} from '../actionCreator';
 import { withRouter } from 'react-router-dom';
 class PostedDetailsContainer extends Component {
   render() {
@@ -10,12 +14,13 @@ class PostedDetailsContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  return { blogs: state.blogs };
+  return { blogs: state.blogs, comments: state.comments };
 }
+// should add the comments to the states
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { deleteBlogsToAPI, putBlogsToAPI }
+    { deleteBlogsToAPI, putBlogsToAPI, getAllCommentsBlogId }
   )(PostedDetailsContainer)
 );

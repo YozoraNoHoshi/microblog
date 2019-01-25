@@ -5,7 +5,8 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT,
   GET_ALLPOSTS,
-  VOTE
+  VOTE,
+  GET_COMMENTS
 } from './actions.js';
 import axios from 'axios';
 const BASE_URL = 'http://localhost:5000/api/posts';
@@ -24,7 +25,6 @@ export function getBlogsFromAPI() {
   return async function(dispatch) {
     const res = await axios.get(`${BASE_URL}/`);
     const blogs = res.data.reduce((accu, curr) => {
-      if (curr.comments[0] === null) curr.comments = [];
       return { ...accu, [curr.id]: curr };
     }, {});
     dispatch(getAllPosts(blogs));
@@ -56,6 +56,15 @@ export function postBlogsToAPI(postObj) {
     res.data.comments = [];
     let payload = res.data;
     dispatch(addPost(payload));
+  };
+}
+
+//get all comments
+export function getAllCommentsBlogId(blogId) {
+  return async function(dispatch) {
+    const res = await axios.get(`${BASE_URL}/${blogId}/comments`);
+    let comments = res.data;
+    dispatch(getAllComments(blogId, comments));
   };
 }
 
@@ -97,8 +106,12 @@ function deletePost(payload) {
   // Payload = id
   return { type: DELETE_POST, payload };
 }
-function addComment(commentObj, blogId) {
-  return { type: ADD_COMMENT, payload: { commentObj, blogId } };
+
+function getAllComments(blogId, comments) {
+  return { type: GET_COMMENTS, payload: { blogId, comments } };
+}
+function addComment(comment, blogId) {
+  return { type: ADD_COMMENT, payload: { comment, blogId } };
 }
 function deleteComment(blogId, commentId) {
   return { type: DELETE_COMMENT, payload: { blogId, commentId } };

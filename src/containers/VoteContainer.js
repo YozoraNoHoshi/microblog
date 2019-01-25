@@ -11,9 +11,9 @@ class VoteContainer extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  // if (state.blogs[ownProps.blogId]) {
-  return { vote: state.blogs[ownProps.blogId].votes };
-  // } else return {};
+  if (state.blogs[ownProps.blogId]) {
+    return { vote: state.blogs[ownProps.blogId].votes };
+  } else return {};
 }
 export default connect(
   mapStateToProps,
