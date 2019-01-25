@@ -8,6 +8,8 @@ import {
   VOTE
 } from './actions.js';
 
+//posts: an object mapping postId: {id, title, description, body, comments}
+
 const INITIAL_STATE = {
   blogs: {
     // id1: {a
@@ -20,7 +22,7 @@ const INITIAL_STATE = {
   }
 };
 
-function rootReducer(state = INITIAL_STATE, action) {
+function posts(state = INITIAL_STATE, action) {
   switch (action.type) {
     case VOTE: {
       let { blogId, votes } = action.payload;
@@ -72,4 +74,4 @@ function rootReducer(state = INITIAL_STATE, action) {
   }
 }
 
-export default rootReducer;
+export default posts;

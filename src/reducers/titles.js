@@ -7,6 +7,7 @@ import {
   GET_ALLPOSTS,
   VOTE
 } from './actions.js';
+//titles: an array of the simple {id, title, description} you get from the backend when you get basic data on all posts
 
 const INITIAL_STATE = {
   blogs: {
@@ -20,7 +21,7 @@ const INITIAL_STATE = {
   }
 };
 
-function rootReducer(state = INITIAL_STATE, action) {
+function titles(state = INITIAL_STATE, action) {
   switch (action.type) {
     case VOTE: {
       let { blogId, votes } = action.payload;
@@ -72,4 +73,4 @@ function rootReducer(state = INITIAL_STATE, action) {
   }
 }
 
-export default rootReducer;
+export default titles;
