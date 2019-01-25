@@ -4,6 +4,7 @@ import {
   EDIT_POST,
   ADD_COMMENT,
   DELETE_COMMENT,
+  EDIT_COMMENT,
   GET_ALLPOSTS,
   VOTE,
   GET_COMMENTS
@@ -77,6 +78,17 @@ export function postCommentToAPI(commentObj, blogId) {
   };
 }
 
+// Edit a comment
+export function editCommentToAPI(blogId, commentObj) {
+  return async function(dispatch) {
+    let res = await axios.put(
+      `${BASE_URL}/${blogId}/comments/${commentObj.id}`,
+      commentObj
+    );
+    commentObj = res.data;
+    dispatch(editComment(blogId, commentObj));
+  };
+}
 // delete a comment
 export function deleteCommentToAPI(blogId, commentId) {
   return async function(dispatch) {
@@ -115,4 +127,7 @@ function addComment(comment, blogId) {
 }
 function deleteComment(blogId, commentId) {
   return { type: DELETE_COMMENT, payload: { blogId, commentId } };
+}
+function editComment(blogId, commentObj) {
+  return { type: EDIT_COMMENT, payload: { blogId, commentObj } };
 }

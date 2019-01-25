@@ -1,4 +1,9 @@
-import { ADD_COMMENT, DELETE_COMMENT, GET_COMMENTS } from '../actions.js';
+import {
+  ADD_COMMENT,
+  DELETE_COMMENT,
+  GET_COMMENTS,
+  EDIT_COMMENT
+} from '../actions.js';
 
 //comment: an object mapping postId: {id, title, description, body, comments}
 
@@ -22,6 +27,17 @@ function comments(state = INITIAL_STATE, action) {
           ...state[action.payload.blogId],
           action.payload.comment
         ]
+      };
+    }
+
+    case EDIT_COMMENT: {
+      return {
+        ...state,
+        [action.payload.blogId]: state[action.payload.blogId].map(c => {
+          if (action.payload.commentObj.id === c.id) {
+            return action.payload.commentObj;
+          } else return c;
+        })
       };
     }
 

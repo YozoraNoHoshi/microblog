@@ -63,7 +63,6 @@ class PostedDetails extends Component {
     ) : (
       false
     );
-    console.log('this.props.comments', this.props.comments);
     let comments = this.props.comments[this.props.match.params.id] ? (
       <section>
         <h2>Comments:</h2>
@@ -86,8 +85,16 @@ class PostedDetails extends Component {
       <div>
         <section>
           <form onSubmit={this.handleEdit}>
-            <h1>Edit Post</h1>
             <div className="form-group">
+              <div className="d-flex flex-row">
+                <h1>Post Details</h1>
+                <button
+                  hidden={this.state.disabled}
+                  className="btn btn-link ml-4"
+                >
+                  Submit
+                </button>
+              </div>
               <label htmlFor="title">Title</label>
               <input
                 type="text"
@@ -124,16 +131,23 @@ class PostedDetails extends Component {
                 disabled={this.state.disabled}
               />
             </div>
-            <button hidden={this.state.disabled} className="btn btn-danger">
-              Submit
-            </button>
+            <div>
+              <button
+                type="button"
+                onClick={this.edit}
+                className="btn btn-primary"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                onClick={this.handleDelete}
+                className="btn btn-danger"
+              >
+                Delete
+              </button>
+            </div>
           </form>
-          <button onClick={this.edit} className="btn btn-primary">
-            Edit
-          </button>
-          <button onClick={this.handleDelete} className="btn btn-primary">
-            Delete
-          </button>
           {vote}
         </section>
         {comments}

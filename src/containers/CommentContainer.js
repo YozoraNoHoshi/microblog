@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Comment from '../components/Comment';
-import { deleteCommentToAPI } from '../actionCreator';
+import { deleteCommentToAPI, editCommentToAPI } from '../actionCreator';
 
 class CommentContainer extends Component {
   render() {
@@ -11,5 +11,5 @@ class CommentContainer extends Component {
 
 export default connect(
   null,
-  { deleteCommentToAPI }
+  { deleteCommentToAPI, editCommentToAPI }
 )(CommentContainer);
