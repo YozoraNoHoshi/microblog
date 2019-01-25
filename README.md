@@ -1,4 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### About<br>
+
+This project was created as part of Rithm School's curriculum, in approximately 15 hours total.
+That the backend requires its own node_modules folder.
+Navigate to /redux-microblog/backend and type
+
+### npm install
+
+to set up the backend, then start the backend in node (in the backend directory) using
+
+### npm start
+
+<br>
 
 ## Available Scripts
 
