@@ -6,7 +6,7 @@ class BlogCard extends Component {
   render() {
     return (
       <div className="col-4 border-box mt-4">
-        <div className="card " style={{ width: '18rem' }}>
+        <div className="card box-shadow" style={{ width: '18rem' }}>
           <div className="card-body">
             <h5 className="card-title">
               <Link to={`/blogs/${this.props.blog.id}`} className="card-link">

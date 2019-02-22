@@ -36,7 +36,8 @@ export function getBlogsFromAPI() {
 export function putBlogsToAPI(postObj, id) {
   return async function(dispatch) {
     const res = await axios.put(`${BASE_URL}/${id}`, postObj);
-    res.data.comments = [...postObj.comments];
+    res.data.comments = [];
+    // res.data.comments = [...postObj.comments];
     let payload = res.data;
     dispatch(editPost(payload));
   };

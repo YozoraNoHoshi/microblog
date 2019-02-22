@@ -7,11 +7,11 @@ class NavBar extends Component {
       <header className="jumbotron">
         <h1 className="display-3 text-left">Micro Blog</h1>
         <p className="lead text-left">
-          This is the blog to record trvial things.
+          The place to record anything and everything.
         </p>
         <nav className="text-left">
           <NavLink className="blockquote mr-4" to="/">
-            Blog
+            Home
           </NavLink>
           <NavLink to="/new">
             <strong>Add a new post</strong>{' '}

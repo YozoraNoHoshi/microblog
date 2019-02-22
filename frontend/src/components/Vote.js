@@ -12,9 +12,13 @@ class Vote extends Component {
   render() {
     return (
       <div className="Vote">
-        <div>{this.props.vote} votes.</div>
-        <button onClick={this.handleVoteUp}>+</button>
-        <button onClick={this.handleVoteDown}>-</button>
+        <div>Overall Rating: {this.props.vote}</div>
+        <button className="btn btn-info" onClick={this.handleVoteUp}>
+          +
+        </button>
+        <button className="btn btn-warning" onClick={this.handleVoteDown}>
+          -
+        </button>
       </div>
     );
   }
