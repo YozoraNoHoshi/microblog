@@ -10,7 +10,8 @@ import {
   GET_COMMENTS
 } from './actions.js';
 import axios from 'axios';
-const BASE_URL = 'http://localhost:5000/api/posts';
+const BASE_URL =
+  process.env.REACT_APP_BASE_URL || 'http://localhost:5000/api/posts';
 
 export function votePost(blogId, direction) {
   // Change is either -1 or +1
